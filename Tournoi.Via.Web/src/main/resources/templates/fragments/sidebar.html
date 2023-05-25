@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sidebar" class='active' th:fragment="sidebar"><!--sidebar-->
+    <div class="sidebar-wrapper active">
+        <div class="sidebar-header">
+            <img src="/images/logo.svg" alt="" srcset="">
+        </div>
+        <div class="sidebar-menu">
+            <ul class="menu">
+
+
+                <li class='sidebar-title'>Main Menu</li>
+
+                <li class="sidebar-item has-sub ">
+                    <a th:href="@{tableTeams}" class='sidebar-link'>
+                        <i data-feather="home" width="20"></i>
+                        <span>Football Team</span>
+                    </a>
+                    
+                             <ul class="submenu ">
+
+                        <li>
+                            <a th:href="@{tableTeams}" class='sidebar-link'> List Football Team</a>
+                        </li>
+                        <li>
+                            <a th:href="@{form}" class='sidebar-link'> Add Football Team</a>
+                        </li>
+                            <li>
+                            <a th:href="@{getupdateTeams}" class='sidebar-link'> Update Team</a>
+                        </li>
+                            <li>
+                            <a th:href="@{getupdateTeams}" class='sidebar-link'> Remove Team</a>
+                        </li>
+                        </ul>
+                </li>
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="triangle" width="20"></i>
+                        <span>Player</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a href="component-alert.html">List players</a>
+                        </li>
+
+                        <li>
+                            <a href="component-badge.html">Add player</a>
+                        </li>
+
+                        <li>
+                            <a href="component-breadcrumb.html">Update player</a>
+                        </li>
+
+                        <li>
+                            <a href="component-buttons.html">Remove player</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                    <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="triangle" width="20"></i>
+                        <span>charts</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a th:href="@{chart}" class='sidebar-link'>charts Teams </a>
+                        </li>
+
+                        <li>
+                            <a href="component-badge.html">charts players</a>
+                        </li>
+
+                         <li>
+                            <a href="component-buttons.html">charts Fixture</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+              
+
+
+                <li class='sidebar-title'>Match &amp; Setup</li>
+
+
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="file-text" width="20"></i>
+                        <span>Match</span>
+                    </a>
+
+                    <ul class="submenu ">
+
+                        <li>
+                            <a href="form-element-input.html"> Add Match </a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+
+
+                <li class="sidebar-item  ">
+                 <a th:href="@{getresults}" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span> Manager Results </span>
+                    </a>
+
+                </li>
+
+
+
+
+                <li class="sidebar-item  ">
+                    <a href="form-editor.html" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i>
+                        <span>Expulsions</span>
+                    </a>
+
+                </li>
+
+
+
+
+                <li class="sidebar-item  ">
+                    <a href="table.html" class='sidebar-link'>
+                        <i data-feather="grid" width="20"></i>
+                        <span>Avertissements</span>
+                    </a>
+
+                </li>
+
+
+
+
+                <li class="sidebar-item  ">
+                <a th:href="@{all}" class='sidebar-link'>
+                        <i data-feather="file-plus" width="20"></i>
+                        <span>Team classement </span>
+                    </a>
+
+                </li>
+
+
+
+
+                <li class='sidebar-title'>Logout </li>
+
+
+
+               
+
+            </ul>
+        </div>
+        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+    </div>
+</div>
+</body>
+</html>

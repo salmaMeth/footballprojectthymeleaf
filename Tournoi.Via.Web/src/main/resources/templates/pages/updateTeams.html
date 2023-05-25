@@ -1,0 +1,101 @@
+</html><!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css"
+	href="../static/css/mon_style.css" th:href="@{/css/mon_style.css}" />
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+<div class="page-title">
+    <h3>Update  football Team</h3>
+    <p class="text-subtitle text-muted">Football team information</p>
+    
+</div>
+	<div class="container">
+		
+<section class="section">
+    <div class="row mb-4">
+        <div class="col-md-7">
+      
+		
+	
+				
+				<form th:action="@{getupdateTeams}" method="get"  th:object="${FootballTeam}">
+				
+				<div class="mb-3">
+				
+						<div class="form-group">
+							<label class="control-label">Name Team</label> </div> 
+	     <div class="input-group">
+							
+							<select
+								class="form-control"  name ="currentTeames" >
+								<option th:each="m:${Teams}" th:value="${m.footballTeamId}"
+									th:text="${m.teamName}"  />
+
+							</select> 
+							<button class="btn btn-primary" type="submit">Valider</button></div>
+							
+				
+					</div>
+					
+					
+					 </form>
+					
+				<form th:action="@{updateTeams}" method="get" th:object="${FootTeam}">
+					
+								
+					
+					<div class="form-group">
+						<label class="control-label">Location</label> <input
+							class="form-control" type="text" th:field="*{location}" /> <span
+							class="red" th:errors="*{location}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Stadium</label> <input
+							class="form-control" type="text" th:field="*{stadium}" /> <span
+							class="red" th:errors="*{stadium}"></span>
+
+					</div>
+				<!-- 	<div class="form-group">
+						<label class="control-label">Status</label> 
+													
+							<input type="checkbox" th:value="*{Status}" th:checked="*{Status}"  />
+						 <span
+							class="red" th:errors="*{Status}"></span>
+					</div> -->
+						<div class="form-group">
+						<label class="control-label">Manager</label> 
+						<input	class="form-control" type="text" th:field="*{Entraineur.firstName}"/> <span
+							class="red" th:errors="*{entraineur.firstName}"></span>
+					</div>
+						<button class="btn btn-success" type="submit">Enregistrer</button>
+						
+						<button class="btn btn-danger" type="reset">Annuler</button>
+						
+
+					</div> </div>
+				</form>
+				</div>
+			</div>
+</body>
+              
+       
+
+
+
+
+
+
+
+</div>
+
+
+
+</div></section></div>
+       
+
+</body>
+</html>

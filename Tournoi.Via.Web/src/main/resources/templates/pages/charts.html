@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css"
+	href="../static/css/mon_style.css" th:href="@{/css/mon_style.css}" />
+	
+	<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+<script type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+<div class="page-title">
+    <h3>Chart teams </h3>
+  
+</div>
+	<div class="container">
+		
+<section class="section">
+    <div class="row mb-5">
+        <div class="col-md-3">
+      <div class="form-group">
+							<label class="control-label">Name Player</label> </div>													      <div class="form-group">
+							
+							<form action="#" th:action="@{/chart}" method="get">
+						  <div class="input-group">
+							
+							<select   class="form-control"	 name="redSoc" >
+								<option th:each="m:${players}" th:value="${m.id}"	th:text="${m.name}"  />
+
+							</select>  				
+												
+							
+									<button class="btn btn-primary" type="submit">Valider</button></div>
+				
+             </form>
+     <div class="col-md-6 mt-3">
+			
+	   <div align="center" style="width: 1000px;">
+        <div id="chart_div"></div>
+        <div id="piechart" style="width: 900px; height: 400px;"></div> </div>
+    </div>
+		
+	
+				</div>
+			</div>
+			 <script th:inline="javascript">
+        var real_data = /*[[${chartData}]]*/'noValue';
+        $(document).ready(function() {
+            google.charts.load('current', {
+                packages : [ 'corechart', 'bar' ]
+            });
+            google.charts.setOnLoadCallback(drawColumnChart);
+            google.charts.setOnLoadCallback(drawPieChart);
+        });
+        function drawColumnChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year');
+            data.addColumn('number', 'Buts');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : ' stats',
+                hAxis : {
+                    title : 'Years',
+                },
+                vAxis : {
+                    title : 'But Count'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document
+                    .getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+        function drawPieChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year');
+            data.addColumn('number', 'But');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : 'Blog stats'
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+        <script>
+      $(document).ready(function() {
+          $("select.selectVal").change(function() {
+              let selectedItem = $(this).children("option:selected").val();
+              alert("You have selected the name - " + selectedItem);
+            });
+        });
+    </script>
+		</div>
+	</div>
+	</div>
+</body>
+              
+       
+
+
+
+
+
+
+
+</div>
+
+
+
+</div></section></div>
+       
+
+</body>
+</html>

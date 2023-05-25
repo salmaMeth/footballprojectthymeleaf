@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/dashboard}">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<div class="main-content container-fluid" layout:fragment="content">
+		<div class="page-title">
+			<h3>Teams ranking</h3>
+			<p class="text-subtitle text-muted">Football Team Class</p>
+
+		</div>
+		<div class="container">
+
+			<section class="section">
+				<div class="row mb-4">
+					<div class="col-md-12">
+
+						<div class="card">
+							<div
+								class="card-header d-flex justify-content-between align-items-center">
+								<h4 class="card-title">List of Team</h4>
+
+								<div class="d-flex ">
+									<i data-feather="download"></i>
+								</div>
+							</div>
+							<div class="card-body px-0 pb-0">
+
+								<div class="table-responsive">
+									<table class='table mb-0' id="table1">
+										<thead>
+										<thead>
+											<tr>
+												<th>Standing Id</th>
+												<th>Football Team Id</th>
+
+
+												<th>Wins</th>
+												<th>Losses</th>
+
+												<th>Points</th>
+												<th>Goals Difference</th>
+
+
+												<th>Table Position</th>
+
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr th:each="Team : ${Teams}">
+												<td><span th:text="${Team.standingId}"> StandingId </span></td>
+
+												<td><span th:text="${Team.footballTeamId}">
+														footballTeam Id </span></td>
+												<td><span th:text="${Team.wins}"> wins </span></td>
+												<td><span th:text="${Team.losses}"> losses </span></td>
+
+												<td><span th:text="${Team.points}"> points </span></td>
+												<td><span th:text="${Team.goalDifference}">
+														goalDifference </span></td>
+												<td><span th:text="${Team.tablePosition}">
+														tablePosition </span></td>
+
+
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+
+				</div>
+			</section>
+		</div>
+</body>
+</html>

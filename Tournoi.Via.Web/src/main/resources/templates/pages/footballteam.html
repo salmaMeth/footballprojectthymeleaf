@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+<div class="page-title">
+    <h3>Football Team</h3>
+    <p class="text-subtitle text-muted">Football team information</p>
+    
+</div>
+	<div class="container">
+			<form th:action="@{tableTeams}" method="get">
+				<label>Mot Clé team Name :</label> <input type="text" name="motCle"
+					th:value="${motCle}" />
+				<button class="btn btn-primary">Chercher</button>
+			</form>
+<section class="section">
+    <div class="row mb-4">
+        <div class="col-md-12">
+      
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">List of Football Team</h4>
+                    
+                    <div class="d-flex ">
+                        <i data-feather="download"></i>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-0">
+                
+                    <div class="table-responsive">
+                        <table class='table mb-0' id="table1">
+                            <thead>
+                            <tr>
+                                <th>team ID</th>
+                                <th>teamName</th>
+                                <th>location</th>
+                                <th>stadium</th>
+                                <th>Status</th>
+                                <th>Manager</th>
+                                <th>Players</th>
+                              	<th>Update</th>
+                              	<th>Delete</th>
+
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                 	<tr th:each="t:${pageteams.content}">
+
+						<td th:text="${t.footballTeamId}"></td>
+
+						<td th:text="${t.teamName}"></td>
+						<td th:text="${t.location}"></td>
+						<td th:text="${t.stadium}"></td>
+						<td th:text="${t.Status}"></td>						
+						
+						<td th:text="${t.Entraineur.firstName}"></td>
+						
+						
+						<td><a th:href="@{getplayer(footballTeamId=${t.footballTeamId})}">Players</a></td>
+						
+						<td><a th:href="@{edit(footballTeamId=${t.footballTeamId})}">Update</a></td>
+						<td><a
+							onclick="return confirm('Confirmez vous la suppression de ce fottball Team?')"
+							th:href="@{delete(footballTeamId=${t.footballTeamId},page=${pageCourante},motCle=${motCle})}">Delete</a></td>
+					</tr>
+                            </tbody>
+                        </table>
+                        	<div class="container">
+                        	
+				<ul class="nav nav-pills">
+				
+			<label>Pages: &nbsp;&nbsp; </label> 
+				<li th:each="t:${pages}" th:class="${p==pageCourante}?active:''">
+				 <a th:text="${t}"	th:href="@{tableTeams(page =${t} , motCle =${motCle})}"></a>
+							        
+					
+				</li>	
+			</ul>
+		</div>
+                    </div>
+                </div>
+            </div>
+       
+
+
+
+
+
+
+
+</div>
+
+
+
+</div></section></div>
+       
+
+</body>
+</html>
